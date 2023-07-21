@@ -1,8 +1,8 @@
-from PyQt6 import QtWidgets, uic
+from PyQt6 import QtWidgets, uic,QtGui,QtCore
 import sys, os
 
 
-class MyWindow(QtWidgets.QWidget):
+class MyWindow(QtWidgets.QDialog):
 
     def __init__(self, *args, **kwargs):
         super(MyWindow, self).__init__(*args, **kwargs)
@@ -14,8 +14,10 @@ if __name__ == '__main__':
 
     app = QtWidgets.QApplication(sys.argv)
     main = MyWindow()
+    main.setObjectName("main")
     cssFile = "main.css"
     with open(cssFile, "r") as fh:
         main.setStyleSheet(fh.read())
+    main.setWindowIcon(QtGui.QIcon())
     main.show()
-    sys.exit(app.exec_())
+    sys.exit(app.exec())
