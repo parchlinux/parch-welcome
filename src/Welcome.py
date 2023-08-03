@@ -26,7 +26,7 @@ class Quick(QQmlApplicationEngine):
 
 
 class Main(Quick):
-    browser = "firefox"
+    browser = "xdg-open"
 
     def b1_(self):
         self.close()
@@ -58,7 +58,7 @@ class Main(Quick):
 
     def b8_(self):
         self.close()
-        subprocess.call('firefox https://parchlinux.ir/parchwiki/', shell=True)
+        subprocess.call(f'{self.browser} https://parchlinux.ir/parchwiki/', shell=True)
 
     def install_(self):
         self.close()
