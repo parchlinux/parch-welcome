@@ -8,7 +8,7 @@ This program is still on alpha stages and it is not completely ready to use.
 ## Build Parch Package
 for building **Parch Package** from **Welcome** project you should run:
 ```shell
-python build.py
+sh build.sh
 ```
 
 ## Build Source
