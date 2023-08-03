@@ -1262,7 +1262,7 @@ class Main(Quick):
 
     def install_(self):
         self.close()
-        subprocess.call('sudo sh /etc/calamares/launch.sh')
+        subprocess.call('sudo sh /etc/calamares/launch.sh',shell=True)
 
     def __init__(self):
         super(Main, self).__init__()
