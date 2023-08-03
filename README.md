@@ -5,18 +5,13 @@ Parch dorood (/do-rood/, درود, pronunciation) which is Persian word for "Gre
 - Running the installer program
 - Updating Parch repositories
 This program is still on alpha stages and it is not completely ready to use.
-## Install
-- **Step 1**: Copy files
-
-for installing jump to `rootcopy` directory and copy `usr` folder to `/` by:
+## Build Parch Package
+for building **Parch Package** from **Welcome** project you should run:
 ```shell
-sudo sh Install.sh
+python Build.py
 ```
 
-- **Step 2**: Set as **start up** application
-after installing we should set `/usr/share/applications/welcome.desktop` as a startup application
-
-## Build
+## Build Source
 
 - **Step 1**: Generate **Qt Resource** from `src/UI` directory
 ```shell
