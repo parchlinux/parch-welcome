@@ -5,25 +5,15 @@ Parch dorood (/do-rood/, درود, pronunciation) which is Persian word for "Gre
 - Running the installer program
 - Updating Parch repositories
 This program is still on alpha stages and it is not completely ready to use.
+
 ## Build Parch Package
 for building **Parch Package** from **Welcome** project you should run:
 ```shell
-sh build.sh
+python Build.py
 ```
 
-## Build Source
-
-- **Step 1**: Generate **Qt Resource** from `src/UI` directory
+## Debug & Run from Source
+if you want to run project without installing, you should run:
 ```shell
-python 01-Generate.py
-```
-
-- **Step 2**: Compile Generated **Qt Resource** `src/UI/res.qrc` file
-```shell
-sh 02-Compile.sh
-```
-
-- **Step 3**: Build one-file python
-```shell
-sh 03-Build.sh
+python Debug.py
 ```
