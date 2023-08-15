@@ -1,5 +1,5 @@
 pkgname=parch-welcome
-destname="/usr"
+destname="/"
 pkgver=1
 pkgrel=0
 pkgdesc='Parch dorood (/do-rood/, درود, pronunciation) which is Persian word for "Greetings", is a welcome app in the Parch distribution.'
