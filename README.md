@@ -30,5 +30,5 @@ sudo pacman -U ./parch-welcome*
 ## Generate Qt Resources (if edited)
 if you made a changes in src you can update the `qrc` by running this command:
 ```shell
-python src/01-Generate.py
+python src/QrcGenerate.py
 ```
