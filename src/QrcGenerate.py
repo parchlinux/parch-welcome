@@ -3,9 +3,6 @@
 
 import os,subprocess
 
-# Jump to src
-os.chdir("src")
-
 # Create Qrc file
 listrc = os.listdir('UI')
 listrc.remove('res.qrc')
