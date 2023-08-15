@@ -1273,12 +1273,12 @@ class Main(Quick):
     # DO: Run Calamares Installer
     def install_(self):
         self.close()
-        subprocess.run('sudo sh /etc/calamares/launch.sh',shell=True)
+        subprocess.Popen('sudo sh /etc/calamares/launch.sh',shell=True)
 
     # DO: Loading link in `xdg-open` function
     def link(self,url):
         self.close()
-        subprocess.run(f'xdg-open {url}',shell=True)
+        subprocess.Popen(f'xdg-open {url}',shell=True)
 
     # DO: Init Function
     def __init__(self):
