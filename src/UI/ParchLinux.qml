@@ -3,16 +3,36 @@ import QtQuick.Controls
 import QtQuick.Controls.Material
 
 ApplicationWindow {
-    width: 900
-    height: 500
+    width: Screen.width
+    height: Screen.height
     flags: Qt.FramelessWindowHint
     visible: true
     id: parch
 
     color: "transparent"
 
-    Rectangle {
+    MouseArea {
         anchors.fill: parent
+        drag{ target: parent; axis: Drag.XandYAxis}
+
+        onMouseXChanged: {
+            if(drag.active){
+                print(parent.x)
+            }
+        }
+
+        onMouseYChanged: {
+            if(drag.active)
+            {
+                print(parent.y)
+            }
+        }
+    }
+
+    Rectangle {
+        anchors.centerIn: parent
+        width: 900
+        height: 500
         radius: 20
         color: "#DD010409"
 
