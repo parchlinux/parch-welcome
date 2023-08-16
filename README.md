@@ -6,14 +6,30 @@ Parch dorood (/do-rood/, درود, pronunciation) which is Persian word for "Gre
 - Updating Parch repositories
 This program is still on alpha stages and it is not completely ready to use.
 
-## Build Parch Package
-for building **Parch Package** from **Welcome** project you should run:
+## Build the package
+- Jump to `build` directory:
 ```shell
-python Build.py
+cd build
+```
+- Compress `parch-welcome` directory for creating package:
+```shell
+tar -czvf parch-welcome.tar.gz parch-welcome/
+```
+- Make package after compressing:
+```shell
+makepkg -f
 ```
 
-## Debug & Run from Source
-if you want to run project without installing, you should run:
+## Install the package
+- For installing this pacakge run:
 ```shell
-python Debug.py
+cd build
+sudo pacman -U ./parch-welcome*
+```
+
+## Generate Qt Resources (if edited)
+if you made a changes in src you can update the `qrc` by running this command:
+```shell
+cd src
+python QrcGenerate.py
 ```
