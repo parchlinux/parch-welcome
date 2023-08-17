@@ -6,7 +6,7 @@ pkgdesc='Parch dorood (/do-rood/, درود, pronunciation) which is Persian word
 arch=('x86_64')
 url="https://parchlinux.ir"
 license=('GPL')
-makedepends=()
+makedepends=("tar")
 depends=("python-pyqt6")
 optdepends=()
 conflicts=()
@@ -14,7 +14,11 @@ provides=("${pkgname}")
 options=(!strip !emptydirs)
 source=("${pkgname}.tar.gz")
 sha256sums=('SKIP')
+prepare() {
+	tar -cvf - parch-welcome | gzip -c > parch-welcome.tar.gz
+}
 package() {
-	install -dm755 ${pkgdir}${destname}
+	prepare
+ 	install -dm755 ${pkgdir}${destname}
 	cp -r ${srcdir}/${pkgname}${destname}/* ${pkgdir}${destname}
 }
