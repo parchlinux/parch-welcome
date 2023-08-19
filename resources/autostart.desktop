@@ -2,7 +2,7 @@
 [Desktop Entry]
 Name=Welcome
 Name[ir]=درود
-Exec=/usr/bin/Welcome
+Exec=/usr/bin/parch-welcome
 Terminal=false
 Type=Application
-Icon=/usr/share/icons/ParchLogo.png
+Icon=/usr/share/icons/parch-welcome.png
