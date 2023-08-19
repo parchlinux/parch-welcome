@@ -12,8 +12,8 @@ import Res
 
 # Simple Qt Quick class for loading QML files
 
-class Quick(QQmlApplicationEngine):
 
+class Quick(QQmlApplicationEngine):
     # DO: Set property of object
     def setProperty(self, name, value):
         self.rootObjects()[0].setProperty(name, value)
@@ -36,7 +36,6 @@ class Quick(QQmlApplicationEngine):
 
 # Main Class of Parch Welcome Project
 class Main(Quick):
-
     # DO: Button 1 loading link: https://github.com/parchlinux
     def b1_(self):
         self.link("https://github.com/parchlinux")
@@ -72,12 +71,12 @@ class Main(Quick):
     # DO: Run Calamares Installer
     def install_(self):
         self.close()
-        subprocess.run('sudo sh /etc/calamares/launch.sh',shell=True)
+        subprocess.Popen("sudo sh /etc/calamares/launch.sh", shell=True)
 
     # DO: Loading link in `xdg-open` function
-    def link(self,url):
+    async def link(self, url):
         self.close()
-        subprocess.run(f'xdg-open {url}',shell=True)
+        await subprocess.Popen(f"xdg-open {url}", shell=True)
 
     # DO: Init Function
     def __init__(self):
@@ -86,43 +85,42 @@ class Main(Quick):
         # Load Main QML file
         self.load(":/ParchLinux.qml")
 
+        self.b1 = self.findChild("b1")  # Find Button 1
+        self.b1.clicked.connect(self.b1_)  # Action: Connect Button 1 action to b1_
 
-        self.b1 = self.findChild("b1")          # Find Button 1
-        self.b1.clicked.connect(self.b1_)       # Action: Connect Button 1 action to b1_
+        self.b2 = self.findChild("b2")  # Find Button 2
+        self.b2.clicked.connect(self.b2_)  # Action: Connect Button 2 action to b2_
 
-        self.b2 = self.findChild("b2")          # Find Button 2
-        self.b2.clicked.connect(self.b2_)       # Action: Connect Button 2 action to b2_
+        self.b3 = self.findChild("b3")  # Find Button 3
+        self.b3.clicked.connect(self.b3_)  # Action: Connect Button 3 action to b3_
 
-        self.b3 = self.findChild("b3")          # Find Button 3
-        self.b3.clicked.connect(self.b3_)       # Action: Connect Button 3 action to b3_
+        self.b4 = self.findChild("b4")  # Find Button 4
+        self.b4.clicked.connect(self.b4_)  # Action: Connect Button 4 action to b4_
 
-        self.b4 = self.findChild("b4")          # Find Button 4
-        self.b4.clicked.connect(self.b4_)       # Action: Connect Button 4 action to b4_
+        self.b5 = self.findChild("b5")  # Find Button 5
+        self.b5.clicked.connect(self.b5_)  # Action: Connect Button 5 action to b5_
 
-        self.b5 = self.findChild("b5")          # Find Button 5
-        self.b5.clicked.connect(self.b5_)       # Action: Connect Button 5 action to b5_
+        self.b6 = self.findChild("b6")  # Find Button 6
+        self.b6.clicked.connect(self.b6_)  # Action: Connect Button 6 action to b6_
 
-        self.b6 = self.findChild("b6")          # Find Button 6
-        self.b6.clicked.connect(self.b6_)       # Action: Connect Button 6 action to b6_
+        self.b7 = self.findChild("b7")  # Find Button 7
+        self.b7.clicked.connect(self.b7_)  # Action: Connect Button 7 action to b7_
 
-        self.b7 = self.findChild("b7")          # Find Button 7
-        self.b7.clicked.connect(self.b7_)       # Action: Connect Button 7 action to b7_
+        self.b8 = self.findChild("b8")  # Find Button 8
+        self.b8.clicked.connect(self.b8_)  # Action: Connect Button 8 action to b8_
 
-        self.b8 = self.findChild("b8")          # Find Button 8
-        self.b8.clicked.connect(self.b8_)       # Action: Connect Button 8 action to b8_
+        self.install = self.findChild("install")  # Find Install Button
+        self.install.clicked.connect(
+            self.install_
+        )  # Action: Connect to install_ function
 
-        self.install = self.findChild('install')        # Find Install Button
-        self.install.clicked.connect(self.install_)     # Action: Connect to install_ function
 
-
-# Start Qt Qui Application loop
-app = QGuiApplication([])
-
-# Set Qt Window Icon
-app.setWindowIcon(QIcon(":/ParchLogo.svg"))
-
-# Loading Main Class
-m = Main()
-
-# Set loop exec
-app.exec()
+if __name__ == "__main__":
+    # Start Qt Qui Application loop
+    app = QGuiApplication([])
+    # Set Qt Window Icon
+    app.setWindowIcon(QIcon(":/ParchLogo.svg"))
+    # Loading Main Class
+    m = Main()
+    # Set loop exec
+    app.exec()
