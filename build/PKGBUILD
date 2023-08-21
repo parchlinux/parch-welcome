@@ -1,6 +1,6 @@
 pkgname=parch-welcome
 arch=('x86_64')
-pkgver=r44.91178ea
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='Parch dorood (/do-rood/, درود, pronunciation) which is Persian word for "Greetings", is a welcome app in the Parch distribution.'
 url="https://github.com/parchlinux/${pkgname}"
