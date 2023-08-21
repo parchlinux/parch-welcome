@@ -119,7 +119,7 @@ if __name__ == "__main__":
     # Start Qt Qui Application loop
     app = QGuiApplication([])
     # Set Qt Window Icon
-    app.setWindowIcon(QIcon(":/ParchLogo.svg"))
+    app.setWindowIcon(QIcon(":ParchLogo.svg"))
     # Loading Main Class
     m = Main()
     # Set loop exec
