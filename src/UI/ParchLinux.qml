@@ -3,15 +3,15 @@ import QtQuick.Controls
 import QtQuick.Controls.Material
 
 ApplicationWindow {
-    width: Screen.width
-    height: Screen.height
-    flags: Qt.FramelessWindowHint
+    width: 900
+    height: 500
+//    flags: Qt.FramelessWindowHint
     visible: true
     id: parch
 
     color: "transparent"
 
-    MouseArea {
+/*    MouseArea {
         anchors.fill: parent
         drag{ target: parent; axis: Drag.XandYAxis}
 
@@ -28,15 +28,15 @@ ApplicationWindow {
             }
         }
     }
-
+*/
     Rectangle {
         anchors.centerIn: parent
         width: 900
         height: 500
-        radius: 20
+//        radius: 20
         color: "#DD010409"
 
-        Row {
+/*        Row {
                 anchors.right: parent.right
                 anchors.top: parent.top
 
@@ -50,7 +50,7 @@ ApplicationWindow {
 
 
         }
-
+*/
         Column {
             anchors.centerIn: parent
 

@@ -83,7 +83,7 @@ class Main(Quick):
         super(Main, self).__init__()
 
         # Load Main QML file
-        self.load(":/ParchLinux.qml")
+        self.load("UI/ParchLinux.qml")
 
         self.b1 = self.findChild("b1")  # Find Button 1
         self.b1.clicked.connect(self.b1_)  # Action: Connect Button 1 action to b1_
