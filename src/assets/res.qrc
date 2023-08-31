@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/">
+        <file>discord.svg</file>
+        <file>x-lg.svg</file>
+        <file>tele.svg</file>
+        <file>cafe.svg</file>
+        <file>book.svg</file>
+        <file>github.svg</file>
+        <file>masto.svg</file>
+        <file>ParchLinux.qml</file>
+        <file>tw.svg</file>
+        <file>install.svg</file>
+        <file>ParchLogo.svg</file>
+        <file>website.svg</file>
+    </qresource>
+</RCC>
