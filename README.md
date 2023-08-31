@@ -4,7 +4,7 @@ Parch dorood (/do-rood/, درود, pronunciation) which is Persian word for "Gre
 - Showing Parch Linux pages on social media
 - Running the installer program
 - Updating Parch repositories
-This program is still on alpha stages and it is not completely ready to use.
+This program is still on beta stages and it is semi complete and ready to use.
 
 ## Build the package on Arch machines
 
@@ -17,11 +17,4 @@ makepkg -f
 ```shell
 cd build
 sudo pacman -U ./parch-welcome*
-```
-
-## Generate Qt Resources (if edited)
-if you made a changes in src you can update the `qrc` by running this command:
-```shell
-cd src
-python QrcGenerate.py
 ```
