@@ -6,22 +6,19 @@ pkgdesc='Parch dorood (/do-rood/, درود, pronunciation) which is Persian word
 url="https://github.com/parchlinux/${pkgname}"
 license=('GPL')
 makedepends=("git")
-depends=("qt6-base" "python" "python-pyqt6")
+depends=("qt6-base" "qt6-declarative" "build-base")
 conflicts=("${pkgname}")
 provides=("${pkgname}")
 source=("${pkgname}::git+${url}")
 #source=("${pkgname}.tar.gz")
 md5sums=('SKIP')
 build(){
-	_src="${srcdir}/${pkgname}/src"
-	_ui="${_src}/UI"
-
-	rcc -g python "${_ui}/res.qrc" -o "${_src}/Res.py"
-	sed -i 's/PySide2/PyQt6/g' "${_src}/Res.py"
-
-	_welcome="${_src}/../${pkgname}-bin"
-	echo "#!/usr/bin/python" > $_welcome && cat "${_src}/Res.py" >> $_welcome && cat "${_src}/Welcome.py" >> $_welcome
-	sed -i 's/import Res//g' $_welcome
+	_workdir="${srcdir}/${pkgname}/"
+  mkdir ${_workdir}/bin
+  cd ${_workdir}/bin
+  qmake6 ..
+  make -j$(nproc)
+  cp ./parch-welcome ../
 }
 
 pkgver() {
@@ -35,19 +32,19 @@ pkgver() {
 
 package() {
 
-    # copy license
-    install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-    install -m644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  # copy license
+  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -m644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-	#copy logo
-	install -Dm644 "${srcdir}/${pkgname}/resources/logo.png" "${pkgdir}/usr/share/icons/${pkgname}.png"
+  #copy logo
+  install -Dm644 "${srcdir}/${pkgname}/resources/logo.png" "${pkgdir}/usr/share/icons/${pkgname}.png"
 
-    # copy welcome binfile into /bin
-    install -Dm755 "${srcdir}/${pkgname}/${pkgname}-bin" "${pkgdir}/usr/bin/${pkgname}"
+  # copy welcome binfile into /bin
+  install -Dm755 "${srcdir}/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
-    # copy autostart desktop file into autostart dir
-    install -Dm644 "${srcdir}/${pkgname}/resources/autostart.desktop" "${pkgdir}/etc/xdg/autostart/${pkgname}.desktop"
+  # copy autostart desktop file into autostart dir
+  install -Dm644 "${srcdir}/${pkgname}/resources/autostart.desktop" "${pkgdir}/etc/xdg/autostart/${pkgname}.desktop"
 
 	# copy appliction desktop file into autostart dir
-    install -Dm644 "${srcdir}/${pkgname}/resources/application.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -Dm644 "${srcdir}/${pkgname}/resources/application.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
