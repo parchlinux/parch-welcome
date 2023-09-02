@@ -1,12 +1,12 @@
 pkgname=parch-welcome
 arch=('x86_64')
-pkgver=1.0.0
+pkgver=r51.646329a
 pkgrel=1
 pkgdesc='Parch dorood (/do-rood/, درود, pronunciation) which is Persian word for "Greetings", is a welcome app in the Parch distribution.'
 url="https://github.com/parchlinux/${pkgname}"
 license=('GPL')
 makedepends=("git")
-depends=("qt6-base" "qt6-declarative" "build-base")
+depends=("qt6-base" "qt6-declarative" "base-devel")
 conflicts=("${pkgname}")
 provides=("${pkgname}")
 source=("${pkgname}::git+${url}")
