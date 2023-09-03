@@ -7,14 +7,15 @@ Parch dorood (/do-rood/, درود, pronunciation) which is Persian word for "Gre
 This program is still on beta stages and it is semi complete and ready to use.
 
 ## Build the package on Arch machines
-
+- For building this package run:
 ```shell
+cd build/
 makepkg -f
 ```
 
 ### Install the package
 - For installing this pacakge run:
 ```shell
-cd build
+cd build/
 sudo pacman -U ./parch-welcome*
 ```
