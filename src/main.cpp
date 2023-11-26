@@ -16,14 +16,13 @@ int main(int argc, char *argv[])
 
     // Register the ProcessHandler class with the QML engine
     qmlRegisterType<ProcessHandler>("com.parch", 1, 0, "ProcessHandler");
-
     // Load the QML content from the resource
     QResource::registerResource(":/resources.rcc");
 
     // Load the QML file
     engine.load(QUrl("qrc:/ParchLinux.qml"));
 
-    // Set App Icon 
+    // Set App Icon
     app.setWindowIcon(QIcon("icon.png"));
 
     return app.exec();

@@ -5,6 +5,8 @@ import com.parch 1.0
 ApplicationWindow {
     width: 900
     height: 500
+    x: (Screen.width - width) / 2  // Center the window horizontally
+    y: (Screen.height - height) / 2  // Center the window vertically
     flags: Qt.FramelessWindowHint
     visible: true
     id: parch
@@ -19,6 +21,40 @@ ApplicationWindow {
         onProcessFinished: {
             // console.log("Process finished with exit code:", exitCode, "Exit status:", exitStatus);
             parch.close()
+        }
+    }
+    MouseArea {
+        anchors.fill: parent;
+        property variant clickPos: "1,1"
+
+        onPressed: {
+            clickPos = Qt.point(mouse.x, mouse.y)
+        }
+
+        onPositionChanged: {
+            var delta = Qt.point(mouse.x - clickPos.x, mouse.y - clickPos.y)
+            var new_x = parch.x + delta.x
+            var new_y = parch.y + delta.y
+
+            // Ensure the new position is within the screen boundaries
+            var screenWidth = Screen.width
+            var screenHeight = Screen.height
+
+            if (new_x < 0) {
+                new_x = 0
+            } else if (new_x + parch.width > screenWidth) {
+                new_x = screenWidth - parch.width
+            }
+
+            if (new_y < 0) {
+                new_y = 0
+            } else if (new_y + parch.height > screenHeight) {
+                new_y = screenHeight - parch.height
+            }
+
+            // Update the window position
+            parch.x = new_x
+            parch.y = new_y
         }
     }
     Rectangle {
