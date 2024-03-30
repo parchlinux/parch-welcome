@@ -3,6 +3,13 @@ import { Button, VerticalBox } from "std-widgets.slint";
 export component AppWindow inherits Window {
     in-out property<int> counter: 42;
     callback request-increase-value();
+    in property <float> default-width: 900;
+    in property<float> defualt-height: 500;
+
+    // window().set_fullscreen();
+    // width: (self.fullScreen - self.width) / 2; // Center the window horizontally
+    // height: (self.fullScreen - self.height) / 2; // Center the window vertically
+
     VerticalBox {
         Text {
             text: "Counter: \{root.counter}";
