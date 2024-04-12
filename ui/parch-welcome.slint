@@ -1,0 +1,27 @@
+import { Button, VerticalBox, HorizontalBox, GridBox } from "std-widgets.slint";
+import "pages/assets/vazirmatn.ttf";
+import "pages/assets/Inter-Regular.ttf";
+import {EnglishApp,PersianApp} from "pages/pages.slint";
+import { Globals } from "pages/globals.slint";
+
+// ReExport for Native access
+export { Globals }
+
+export component App inherits Window {
+    width: 949px;
+    height: 650px;
+    no-frame: true;
+    background: transparent;
+    Rectangle {
+        border-radius: 15px;
+        background: Globals.currentTheme ? Globals.lightTheme : Globals.darkTheme;
+        animate background {
+            duration: 275ms;
+            easing: ease-in-out;
+        }
+        VerticalLayout {
+            if Globals.isEnglishPage: EnglishApp { }
+            if !Globals.isEnglishPage: PersianApp { }
+        }
+    }
+}

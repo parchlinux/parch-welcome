@@ -1,0 +1,26 @@
+export global Globals {
+    callback close();
+    callback openUrl(string);
+    callback startInstaller();
+
+    // True Stand for Light Theme
+    in-out property <bool> currentTheme: true;
+    // True Stand for PersianApp
+    in-out property <bool> isEnglishPage: true;
+
+    out property <color> lightTheme: #FAFAFA;
+    out property <color> darkTheme: #323232;
+    out property <color> primaryDark:#242424;
+    in-out property <color> themeStatus: primaryDark;
+    public function switchTheme(){
+        currentTheme = !currentTheme;
+        if themeStatus == primaryDark {
+            themeStatus = Colors.white;
+        } else {
+            themeStatus = primaryDark;
+        }
+    }
+    public function changeLang(){
+        isEnglishPage = !isEnglishPage;
+    }
+}
