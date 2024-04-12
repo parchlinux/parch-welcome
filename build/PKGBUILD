@@ -19,5 +19,23 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname"
+
+  # copy license
+  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -m644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  # copy logo
+  install -Dm644 "${srcdir}/${pkgname}/resources/logo.png" "${pkgdir}/usr/share/icons/${pkgname}.png"
+
+  # copy autostart desktop file
+  install -Dm644 "${srcdir}/${pkgname}/resources/autostart.desktop" "${pkgdir}/etc/xdg/autostart/${pkgname}.desktop"
+
+  # copy application desktop file
+  install -Dm644 "${srcdir}/${pkgname}/resources/application.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+
+  # copy application welcome file
+  install -Dm644 "${srcdir}/${pkgname}/resources/application.welcome" "${pkgdir}/usr/share/my-rust-app/application.welcome"
+
+  # install binary
   install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
