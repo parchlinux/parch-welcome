@@ -9,7 +9,7 @@ url="https://github.com/parchlinux/parch-welcome"
 license=('GPL-3')
 depends=('gcc-libs')
 makedepends=('git' 'rust')
-source=("$pkgname::git+$url#branch=slint")
+source=("$pkgname::git+$url#branch=main")
 md5sums=('SKIP')
 
 build() {
