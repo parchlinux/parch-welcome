@@ -1,0 +1,298 @@
+import { Button, VerticalBox, HorizontalBox, GridBox } from "std-widgets.slint";
+import { Globals } from "globals.slint";
+export component PersianApp {
+    VerticalLayout {
+        HorizontalLayout {
+            padding-left: 30px;
+            padding-right: 30px;
+            padding-top: 10px;
+            height: 80px;
+            width: 100%;
+            alignment: space-between;
+            TouchArea {
+                clicked => {
+                    Globals.close();
+                }
+                Image {
+                    image-fit: contain;
+                    source: @image-url("assets/close.png");
+                }
+            }
+
+            Rectangle { }
+
+            Rectangle {
+
+                clip: true;
+                TouchArea {
+                    HorizontalBox {
+                        alignment: center;
+                        padding: 0px;
+                        Text {
+                            vertical-alignment: center;
+                            horizontal-alignment: right;
+                            text: "پارچ تاریک";
+                            font-family: "Vazirmatn";
+                            font-weight: 900;
+                            font-size: 16px;
+
+                            color: Globals.themeStatus;
+                        }
+
+                        Image {
+                            colorize: Globals.themeStatus;
+                            vertical-alignment: center;
+                            source: @image-url("assets/night-mode.png");
+                        }
+                    }
+
+                    clicked => {
+                        Globals.switchTheme();
+                    }
+                }
+            }
+        }
+
+        HorizontalLayout {
+            height: 275px;
+            alignment: center;
+            VerticalBox {
+                HorizontalBox {
+                    alignment: center;
+                    Image {
+                        image-fit: fill;
+                        width: 100.52px;
+                        height: 166px;
+                        source: @image-url("assets/logo.png");
+                    }
+                }
+
+                Image {
+                    height: 80px;
+                    source: @image-url("assets/parchlinux.png");
+                }
+            }
+        }
+
+        VerticalLayout {
+            HorizontalBox {
+                Image {
+                    colorize: Globals.themeStatus;
+                    source: @image-url("assets/parchlinuxtext.png");
+                    height: 40px;
+                }
+            }
+
+            HorizontalBox {
+                height: 50px;
+                Text {
+                    color: Globals.themeStatus;
+                    horizontal-alignment: center;
+                    text: "!اگر از ما حمایت کنید خوشحال خواهیم شد";
+                    font-size: 20px;
+                    font-family: "Vazirmatn";
+                    font-weight: 900;
+                }
+            }
+
+            HorizontalBox {
+                height: 50px;
+                alignment: center;
+                GridBox {
+                    spacing: 30px;
+                    TouchArea {
+                        Image {
+                            colorize: Globals.themeStatus;
+                            width: 30px;
+                            height: 30px;
+                            source: @image-url("assets/github.png");
+                        }
+
+                        clicked => {
+                            Globals.openUrl("https://github.com/parchlinux");
+                        }
+                    }
+
+                    TouchArea {
+                        Image {
+
+                            colorize: Globals.themeStatus;
+                            width: 30px;
+                            height: 30px;
+                            source: @image-url("assets/twitter.png");
+                        }
+
+                        clicked => {
+                            Globals.openUrl("https://twitter.com/bssfoss");
+                        }
+                    }
+
+                    TouchArea {
+                        Image {
+
+                            colorize: Globals.themeStatus;
+                            width: 30px;
+                            height: 30px;
+                            source: @image-url("assets/telegram.png");
+                        }
+
+                        clicked => {
+                            Globals.openUrl("https://t.me/parchlinux");
+                        }
+                    }
+
+                    TouchArea {
+                        Image {
+
+                            colorize: Globals.themeStatus;
+                            width: 30px;
+                            height: 30px;
+                            source: @image-url("assets/discord.png");
+                        }
+
+                        clicked => {
+                            Globals.openUrl("https://discord.gg/9RW5cRByAM");
+                        }
+                    }
+
+                    TouchArea {
+                        Image {
+
+                            colorize: Globals.themeStatus;
+                            width: 30px;
+                            height: 30px;
+                            source: @image-url("assets/mastadon.png");
+                        }
+
+                        clicked => {
+                            Globals.openUrl("https://mas.to/@bssfoss");
+                        }
+                    }
+
+                    TouchArea {
+                        Image {
+
+                            colorize: Globals.themeStatus;
+                            width: 30px;
+                            height: 30px;
+                            source: @image-url("assets/coffee-cup.png");
+                        }
+
+                        clicked => {
+                            Globals.openUrl("https://daramet.com/parchlinux");
+                        }
+                    }
+
+                    TouchArea {
+                        Image {
+
+                            colorize: Globals.themeStatus;
+                            width: 30px;
+                            height: 30px;
+                            source: @image-url("assets/web.png");
+                        }
+
+                        clicked => {
+                            Globals.openUrl("https://parchlinux.com");
+                        }
+                    }
+
+                    TouchArea {
+                        Image {
+
+                            colorize: Globals.themeStatus;
+                            width: 30px;
+                            height: 30px;
+                            source: @image-url("assets/open-book.png");
+                        }
+
+                        clicked => {
+                            Globals.openUrl("https://wiki.parchlinux.com");
+                        }
+                    }
+                }
+            }
+
+            VerticalBox {
+                alignment: start;
+                height: 40px;
+                Text {
+
+                    color: Globals.themeStatus;
+                    height: 25px;
+                    text: "برای نصب پارچ روی کامپیوتر خود دکمه زیر را فشار دهید";
+                    font-size: 16px;
+                    font-family: "Vazirmatn";
+                    horizontal-alignment: center;
+                    vertical-alignment: center;
+                }
+            }
+
+            HorizontalLayout {
+                alignment: center;
+                TouchArea {
+                    clicked => {
+                        Globals.startInstaller();
+                    }
+                    Rectangle {
+                        width: 144px;
+                        height: 42px;
+                        background: Globals.currentTheme ? white : Globals.primaryDark;
+                        animate background, drop-shadow-color, drop-shadow-blur {
+                            duration: 275ms;
+                            easing: ease-in-out;
+                        }
+                        border-radius: 8px;
+                        drop-shadow-color: Globals.currentTheme ? #d9d9d9 : #404040;
+                        drop-shadow-blur: 12px;
+                        drop-shadow-offset-x: 2px;
+                        drop-shadow-offset-y: 2px;
+                        HorizontalBox {
+                            alignment: center;
+                            Text {
+                                text: "نصب پارچ";
+                                font-family: "Vazirmatn";
+                                color: Globals.currentTheme ? #0D40BF : Colors.white;
+                                font-size: 16px;
+                                font-weight: 900;
+                            }
+
+                            Image {
+                                colorize: Globals.currentTheme ? transparent : white;
+                                image-fit: fill;
+                                source: @image-url("assets/inbox.png");
+                            }
+                        }
+                    }
+                }
+            }
+
+            HorizontalLayout {
+                alignment: end;
+                TouchArea {
+                    clicked => {
+                        Globals.changeLang();
+                    }
+                    HorizontalBox {
+                        padding-right: 30px;
+                        Text {
+                            vertical-alignment: center;
+                            horizontal-alignment: right;
+                            text: "فارسی";
+                            font-family: "Vazirmatn";
+                            font-weight: 900;
+                            font-size: 16px;
+                            color: Globals.themeStatus;
+                        }
+
+                        Image {
+                            colorize: Globals.themeStatus;
+                            vertical-alignment: center;
+                            source: @image-url("assets/lang.png");
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

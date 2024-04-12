@@ -1,50 +1,23 @@
+# Maintainer: ParchLinux
+
 pkgname=parch-welcome
-arch=('x86_64')
-pkgver=1.0.0
+pkgver=2.0.0
 pkgrel=1
-pkgdesc='Parch dorood (/do-rood/, درود, pronunciation) which is Persian word for "Greetings", is a welcome app in the Parch distribution.'
-url="https://github.com/parchlinux/${pkgname}"
-license=('GPL')
-makedepends=("git")
-depends=("qt6-base" "qt6-declarative" "base-devel" "qt6-svg")
-conflicts=("${pkgname}")
-provides=("${pkgname}")
-source=("${pkgname}::git+${url}")
-#source=("${pkgname}.tar.gz")
+pkgdesc="Welcome application for Parch Linux"
+arch=('x86_64')
+url="https://github.com/parchlinux/parch-welcome"
+license=('GPL-3')
+depends=('gcc-libs')
+makedepends=('git' 'rust')
+source=("$pkgname::git+$url#branch=slint")
 md5sums=('SKIP')
-build(){
-	_workdir="${srcdir}/${pkgname}/"
-  mkdir ${_workdir}/bin
-  cd ${_workdir}/bin
-  qmake6 ..
-  make -j$(nproc)
-  cp ./parch-welcome ../
-}
 
-pkgver() {
-  cd "${srcdir}/${pkgname}"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+build() {
+  cd "$srcdir/$pkgname"
+  cargo build --release
 }
-
 
 package() {
-
-  # copy license
-  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -m644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-  #copy logo
-  install -Dm644 "${srcdir}/${pkgname}/resources/logo.png" "${pkgdir}/usr/share/icons/${pkgname}.png"
-
-  # copy welcome binfile into /bin
-  install -Dm755 "${srcdir}/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-
-  # copy autostart desktop file into autostart dir
-  install -Dm644 "${srcdir}/${pkgname}/resources/autostart.desktop" "${pkgdir}/etc/xdg/autostart/${pkgname}.desktop"
-
-	# copy appliction desktop file into autostart dir
-  install -Dm644 "${srcdir}/${pkgname}/resources/application.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  cd "$srcdir/$pkgname"
+  install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }

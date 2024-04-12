@@ -1,0 +1,20 @@
+[package]
+name = "parch-welcome"
+version = "2.0.0"
+authors = ["DanielcoderX <danielcoderx@keemail.me>"]
+edition = "2021"
+build = "build.rs"
+
+[dependencies]
+open = "5.1.2"
+slint = "1.4"
+
+[build-dependencies]
+slint-build = "1.4"
+
+[profile.release]
+lto = true
+panic = "abort"
+strip = true
+codegen-units = 1
+opt-level = "s"
