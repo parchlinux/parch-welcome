@@ -33,9 +33,6 @@ package() {
   # copy application desktop file
   install -Dm644 "${srcdir}/${pkgname}/resources/application.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
-  # copy application welcome file
-  install -Dm644 "${srcdir}/${pkgname}/resources/application.welcome" "${pkgdir}/usr/share/my-rust-app/application.welcome"
-
   # install binary
   install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
