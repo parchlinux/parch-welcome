@@ -12,7 +12,7 @@ fn main() {
         let _ = open::that(url.as_str());
     });
     appwindow.global::<Globals>().on_startInstaller(move || {
-        let _ = Command::new("sudo").arg("-E").arg("calamares").spawn();
+        let _ = Command::new("sudo").arg("-E").arg("/etc/calamares/launch.sh").spawn();
     });
     let _ = appwindow.run();
 }
