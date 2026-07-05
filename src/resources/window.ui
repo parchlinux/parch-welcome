@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<interface domain="welcome">
+  <requires lib="Adw" version="1.0"/>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libadwaita" version="1.4"/>
+  <template class="DoroodWindow" parent="AdwApplicationWindow">
+    <property name="content">
+      <object class="AdwToolbarView">
+        <child type="top">
+          <object class="AdwHeaderBar">
+            <child>
+              <object class="GtkButton" id="toggle_button">
+                <property name="css-classes">flat</property>
+                <property name="icon-name">preferences-desktop-locale-symbolic</property>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="AdwStatusPage" id="status_page">
+            <property name="child">
+              <object class="GtkButton" id="start_button">
+                <property name="css-classes">pill
+suggested-action</property>
+                <property name="halign">center</property>
+                <property name="label" translatable="yes">Start</property>
+              </object>
+            </property>
+            <property name="description">Get Started with the installation process</property>
+            <property name="icon-name">com.parchlinux.welcome</property>
+            <property name="title" translatable="yes">Welcome</property>
+          </object>
+        </child>
+      </object>
+    </property>
+    <property name="default-height">600</property>
+    <property name="default-width">800</property>
+    <property name="resizable">False</property>
+    <property name="title" translatable="yes">Welcome</property>
+  </template>
+</interface>
