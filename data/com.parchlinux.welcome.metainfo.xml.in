@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>com.parchlinux.welcome</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+
+  <name>Parch Welcome</name>
+  <summary>Welcome application for Parch Linux</summary>
+  <description>
+    <p>A welcome screen for the Parch Linux distribution that helps you get started with the installation process.</p>
+  </description>
+
+  <developer id="com.parchlinux">
+    <name>Parch Linux</name>
+  </developer>
+
+  <url type="homepage">https://parchlinux.com/</url>
+  <url type="bugtracker">https://github.com/parchlinux/parch-welcome/issues</url>
+  <url type="vcs-browser">https://github.com/parchlinux/parch-welcome</url>
+
+  <translation type="gettext">welcome</translation>
+  <launchable type="desktop-id">com.parchlinux.welcome.desktop</launchable>
+  <content_rating type="oars-1.1" />
+
+  <branding>
+    <color type="primary" scheme_preference="light">#ff00ff</color>
+    <color type="primary" scheme_preference="dark">#993d3d</color>
+  </branding>
+
+  <releases>
+    <release version="0.1.0" date="2025-01-01">
+      <description translate="no">
+        <p>Initial release</p>
+      </description>
+    </release>
+  </releases>
+</component>

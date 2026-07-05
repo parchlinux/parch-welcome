@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Parch Welcome
+Exec=parch-welcome
+Icon=com.parchlinux.welcome
+Terminal=false
+Type=Application
+Categories=Utility;
+Keywords=Parch;Setup;Install
+StartupNotify=true
+DBusActivatable=true
+X-GNOME-Autostart-enabled=true
