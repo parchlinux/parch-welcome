@@ -1,6 +1,6 @@
 # Maintainer: Sohrab Behdani <sohrab@parchlinux.com>
 pkgname=parch-welcome
-pkgver=0.1.0
+pkgver=0.1.0.r1.g5013afb
 pkgrel=1
 pkgdesc="Welcome application for the Parch Linux distribution"
 arch=('x86_64')
@@ -13,7 +13,13 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/parch-welcome"
-    git describe --tags --abbrev=0 | sed 's/^v//'
+    local version
+    version=$(grep '^version' Cargo.toml | head -1 | sed 's/.*"\(.*\)".*/\1/')
+    local rev
+    rev=$(git rev-list --count HEAD)
+    local hash
+    hash=$(git rev-parse --short HEAD)
+    echo "${version}.r${rev}.g${hash}"
 }
 
 build() {
